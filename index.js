@@ -7,6 +7,11 @@ const deleteOldFiles = require("./deleteOldFiles");
 const session = require("express-session");
 require('dotenv').config();
 
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -74,10 +79,6 @@ app.get("/download/:filename", (req, res) => {
         .json({ message: "There was some error while downloading file" });
     }
   });
-});
-
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
 });
 
 app.listen(1000, () => {
