@@ -66,7 +66,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
     res.send(`
         <h1>Here is your link!</h1>
         <p>Share this link below:</p>
-        <a href="download/${req.file.filename}" download>${link}</a>
+        <a href="/download/${req.file.filename}" download>${link}</a>
     `);
   } catch (error) {
     return res
